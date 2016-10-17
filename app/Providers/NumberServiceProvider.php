@@ -32,7 +32,17 @@ class NumberServiceProvider extends ServiceProvider implements NumberInterface
 
     }
 
-
+    /**
+     * Method creates stdClass object from integer value
+     * stdClass is an appropriate object for fractal NumberTransformer
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on 2016-10-17
+     * @param      $num
+     * @param bool $isUpper
+     *
+     * @return \stdClass
+     */
     public function createObjectFromInteger($num, $isUpper = true)
     {
         $n = intval($num);
@@ -88,6 +98,16 @@ class NumberServiceProvider extends ServiceProvider implements NumberInterface
         return $obj;
     }
 
+    /**
+     * Method returns recent numbers with default limit=10
+     * ordered by updated_at
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on 2016-10-17
+     * @param int $limit
+     *
+     * @return mixed
+     */
     public function getRecentNumbers($limit = 10)
     {
         return Number::orderBy('updated_at', 'desc')
@@ -95,6 +115,16 @@ class NumberServiceProvider extends ServiceProvider implements NumberInterface
             ->get();
     }
 
+    /**
+     * Method returns top numbers with default limit=10
+     * ordered by requests count
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on 2016-10-17
+     * @param int $limit
+     *
+     * @return mixed
+     */
     public function getTopNumbers($limit = 10)
     {
         return Number::orderBy('count', 'desc')

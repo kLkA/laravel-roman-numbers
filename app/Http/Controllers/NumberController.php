@@ -21,6 +21,14 @@ class NumberController extends BaseApiController
         //$this->numberProvider->test();
     }
 
+    /**
+     *
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on 2016-10-17
+     *
+     * @return \Dingo\Api\Http\Response
+     */
     public function recent()
     {
         $limit = $this->request->input('limit');
@@ -28,6 +36,14 @@ class NumberController extends BaseApiController
         return $this->response->collection($numbers, new NumberTransformer);
     }
 
+    /**
+     *
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on 2016-10-17
+     *
+     * @return \Dingo\Api\Http\Response
+     */
     public function top()
     {
         $limit = $this->request->input('limit');
@@ -36,6 +52,15 @@ class NumberController extends BaseApiController
         return $this->response->collection($numbers, new NumberTransformer);
     }
 
+    /**
+     * 2016-10-17
+     *
+     * @author Dmitry Fedorov <klka1@live.ru>
+     * @version 1.0 on
+     * @param $id
+     *
+     * @return \Dingo\Api\Http\Response|void
+     */
     public function show($id)
     {
         $id = (int)$id;
